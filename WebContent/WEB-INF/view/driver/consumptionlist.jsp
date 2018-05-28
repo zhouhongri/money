@@ -76,6 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
 	$(function(){
 		//alert('${list}');
+		alert(666);
 	})
 </script>
 </html>
