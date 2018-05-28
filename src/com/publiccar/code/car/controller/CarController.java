@@ -19,8 +19,12 @@ public class CarController {
 	//查询空闲符合要求的车辆信息
 	@RequestMapping("/queryCar")
 	public String queryCarCtrl(HttpServletRequest req, String currpage) {
-		this.carServiceInter.queryCarService(req, currpage);
-		return "officials/cars";
+		String flag = this.carServiceInter.queryCarService(req, currpage);
+		if("车辆部门".equals(flag)) {
+			return "cardemp/cars";
+		}else {
+			return "officials/cars";
+		}
 	}
 	//提交用车申请
 	@RequestMapping("/queryCarById")

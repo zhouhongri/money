@@ -5,6 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.publiccar.code.model.PublicCar;
 
 public interface CarServiceInter {
-	public void queryCarService(HttpServletRequest req, String currpage);
+	public String queryCarService(HttpServletRequest req, String currpage);
 	public PublicCar queryCarByIdService(PublicCar publicCar);
 }
