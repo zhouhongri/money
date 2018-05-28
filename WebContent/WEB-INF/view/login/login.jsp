@@ -42,7 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	function keyLogin(e){
-		alert(666);
 		var theEvent = window.event||e;
 		var code = theEvent.keyCode||theEvent.which;
 		if(code==13){
