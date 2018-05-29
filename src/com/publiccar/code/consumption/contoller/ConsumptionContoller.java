@@ -11,32 +11,32 @@ import com.publiccar.code.model.Consumption;
 import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.Repair;
 
-//ÓÍºÄ¹ÜÀí
+//æ²¹è€—ç®¡ç†
 @Controller
 @RequestMapping("consumption")
 public class ConsumptionContoller {
 	@Autowired
 	private ConsumptionServiceInter consumptionSercice;
-	//²éÑ¯ÓÍºÄĞÅÏ¢
+	//æŸ¥è¯¢æ²¹è€—ä¿¡æ¯
 	@RequestMapping("/selectconsumption")
 	 public String selectconsumption(HttpServletRequest req, String currpage) {
 	       this.consumptionSercice.selectconsumption(req, currpage);
 	       return "driver/consumptionlist";
 	}
-	//Ìø×ªĞÂÔöÒ³Ãæ
+	//è·³è½¬æ–°å¢é¡µé¢
 		@RequestMapping("/queryconsumption")
 			public String queryconsumption(HttpServletRequest req) {
 			PublicCar car = this.consumptionSercice.queryconsumption(req);
 			req.setAttribute("PublicCar", car);
 				return "driver/consumption_add";
 			}
-		//Ìí¼ÓÓÍºÄĞÅÏ¢
+		//æ·»åŠ æ²¹è€—ä¿¡æ¯
 			@RequestMapping("/insertconsumption")
 			public String insertconsumption(HttpServletRequest req,Consumption consumption) {
 				this.consumptionSercice.insertconsumption(req, consumption);
 				return "driver/consumption_add";
 			}
-		//É¾³ıÓÍºÄĞÅÏ¢
+		//åˆ é™¤æ²¹è€—ä¿¡æ¯
 			@RequestMapping("/deleteconsumption")
 			public String deleteconsumption(HttpServletRequest req,Consumption consumption) {
 		        this.consumptionSercice.deleteconsumption(req, consumption);

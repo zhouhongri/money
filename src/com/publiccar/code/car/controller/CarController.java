@@ -16,17 +16,17 @@ public class CarController {
 	@Autowired
 	public CarServiceInter carServiceInter;
 	
-	//²éÑ¯¿ÕÏĞ·ûºÏÒªÇóµÄ³µÁ¾ĞÅÏ¢
+	//æŸ¥è¯¢ç©ºé—²ç¬¦åˆè¦æ±‚çš„è½¦è¾†ä¿¡æ¯
 	@RequestMapping("/queryCar")
 	public String queryCarCtrl(HttpServletRequest req, String currpage) {
 		String flag = this.carServiceInter.queryCarService(req, currpage);
-		if("³µÁ¾²¿ÃÅ".equals(flag)) {
+		if("è½¦è¾†éƒ¨é—¨".equals(flag)) {
 			return "cardemp/cars";
 		}else {
 			return "officials/cars";
 		}
 	}
-	//Ìá½»ÓÃ³µÉêÇë
+	//æäº¤ç”¨è½¦ç”³è¯·
 	@RequestMapping("/queryCarById")
 	public String queryCarByIdCtrl(HttpServletRequest req, PublicCar publicCar) {
 		PublicCar car = this.carServiceInter.queryCarByIdService(publicCar);
