@@ -1,6 +1,5 @@
-package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-29 10:07:10 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -76,7 +75,7 @@ public class Insurance implements java.io.Serializable {
 		this.insuranceType = insuranceType;
 	}
 
-	@Column(name = "insurance_begindate", length = 0)
+	@Column(name = "insurance_begindate")
 	public String getInsuranceBegindate() {
 		return this.insuranceBegindate;
 	}
@@ -85,7 +84,7 @@ public class Insurance implements java.io.Serializable {
 		this.insuranceBegindate = insuranceBegindate;
 	}
 
-	@Column(name = "insurance_enddate", length = 0)
+	@Column(name = "insurance_enddate")
 	public String getInsuranceEnddate() {
 		return this.insuranceEnddate;
 	}

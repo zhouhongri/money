@@ -1,6 +1,5 @@
-package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-29 10:07:10 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,16 +19,18 @@ public class Annual implements java.io.Serializable {
 	private Integer carId;
 	private Integer driverId;
 	private String annualContent;
-	private String annualDate;
+	private String annualBegindate;
+	private String annualEndate;
 
 	public Annual() {
 	}
 
-	public Annual(Integer carId, Integer driverId, String annualContent, String annualDate) {
+	public Annual(Integer carId, Integer driverId, String annualContent, String annualBegindate, String annualEndate) {
 		this.carId = carId;
 		this.driverId = driverId;
 		this.annualContent = annualContent;
-		this.annualDate = annualDate;
+		this.annualBegindate = annualBegindate;
+		this.annualEndate = annualEndate;
 	}
 
 	@Id
@@ -62,7 +63,7 @@ public class Annual implements java.io.Serializable {
 		this.driverId = driverId;
 	}
 
-	@Column(name = "annual__content", length = 100)
+	@Column(name = "annual_content", length = 100)
 	public String getAnnualContent() {
 		return this.annualContent;
 	}
@@ -71,13 +72,22 @@ public class Annual implements java.io.Serializable {
 		this.annualContent = annualContent;
 	}
 
-	@Column(name = "annual__date", length = 0)
-	public String getAnnualDate() {
-		return this.annualDate;
+	@Column(name = "annual_begindate")
+	public String getAnnualBegindate() {
+		return this.annualBegindate;
 	}
 
-	public void setAnnualDate(String annualDate) {
-		this.annualDate = annualDate;
+	public void setAnnualBegindate(String annualBegindate) {
+		this.annualBegindate = annualBegindate;
+	}
+
+	@Column(name = "annual_endate")
+	public String getAnnualEndate() {
+		return this.annualEndate;
+	}
+
+	public void setAnnualEndate(String annualEndate) {
+		this.annualEndate = annualEndate;
 	}
 
 }
