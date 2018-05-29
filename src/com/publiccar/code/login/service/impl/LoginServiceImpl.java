@@ -27,25 +27,25 @@ public class LoginServiceImpl implements LoginServiceInter {
 		if(list.size()>0&&list!=null){
 			if(user.getUserPassword().equals(list.get(0).getUserPassword())){
 				result.put("result",true);
-				result.put("mess", "µÇÂ½³É¹¦");
+				result.put("mess", "ç™»é™†æˆåŠŸ");
 				session.setAttribute("user", list.get(0));
 				if("0".equals(list.get(0).getUserIdentity())){
-					result.put("useridentity", "¹ÜÀíÔ±");
+					result.put("useridentity", "ç®¡ç†å‘˜");
 				}else if("1".equals(list.get(0).getUserIdentity())){
-					result.put("useridentity", "¼İÊ»Ô±");
+					result.put("useridentity", "é©¾é©¶å‘˜");
 				}else if("2".equals(list.get(0).getUserIdentity())){
-					result.put("useridentity", "³µÁ¾²¿ÃÅ¸ºÔğÈË");
+					result.put("useridentity", "è½¦è¾†éƒ¨é—¨è´Ÿè´£äºº");
 				}else if("3".equals(list.get(0).getUserIdentity())){
-					result.put("useridentity", "ÓÃ³µ¹ÙÔ±");
+					result.put("useridentity", "ç”¨è½¦å®˜å‘˜");
 				}	
 			}else{
 				result.put("result", false);
-				result.put("mess", "ÃÜÂë²»ÕıÈ·");
+				result.put("mess", "å¯†ç ä¸æ­£ç¡®");
 			}	
 		}
 		else{
 			result.put("result", false);
-			result.put("mess", "ÓÃ»§Ãû²»´æÔÚ");
+			result.put("mess", "ç”¨æˆ·åä¸å­˜åœ¨");
 		}
 		return result;
 	}

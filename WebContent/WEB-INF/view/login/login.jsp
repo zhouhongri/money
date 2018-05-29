@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}else if(result.useridentity=="驾驶员"){
 					window.location.href="<%=path %>/common/driver/index";
 				}else if(result.useridentity=="车辆部门负责人"){
-					window.location.href="";
+					window.location.href="<%=path %>/common/driverdemp/index";
 				}else if(result.useridentity=="用车官员"){
 					window.location.href="<%=path %>/common/officials/index";
 				}

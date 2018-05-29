@@ -22,12 +22,12 @@ public class CarServiceImpl implements CarServiceInter{
 		User user = (User) session.getAttribute("user");
 		int intcurrpage = Integer.parseInt(currpage);
 		String dempName = user.getUserDemp();
-		if("车辆部门".equals(dempName)) {
+		if("杞﹁締閮ㄩ棬".equals(dempName)) {
 			this.carDaoInter.queryCars(req, intcurrpage);
-			return "车辆部门";
+			return "杞﹁締閮ㄩ棬";
 		}else {
 			this.carDaoInter.queryCars(req, intcurrpage, dempName);
-			return "用车官员";
+			return "鐢ㄨ溅瀹樺憳";
 		}
 	}
 	@Override
