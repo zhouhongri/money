@@ -1,5 +1,7 @@
 package com.publiccar.code.user.service;
 
-public interface UserServiceInter {
+import com.publiccar.code.model.User;
 
+public interface UserServiceInter {
+	public User getUserByIdService(User user);
 }

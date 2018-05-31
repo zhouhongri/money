@@ -9,7 +9,7 @@ import org.hibernate.transform.Transformers;
 
 public class PageUtil {
 	
-	private int pageData=10;
+	private int pageData=1;
 	private int totalPage;
 	private int totalData;
 	private List<Map<String,Object>> dataList;

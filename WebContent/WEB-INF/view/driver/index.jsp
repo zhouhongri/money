@@ -24,7 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="leftnav">
   <div class="leftnav-title">
 			<strong><span class="icon-list"></span>菜单列表</strong>
-		</div> 
+		</div>
+		 <h2>
+					<span class="icon-pencil-square-o">车辆管理</span></h2>
+		  <ul>
+		    <li><a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=1" target="right"><span
+							class="icon-caret-right"></span>查询车辆申请记录</a></li>
+			
+		  </ul>  
 		  <h2>
 					<span class="icon-pencil-square-o"></span>维修管理</h2>
 		  <ul>

@@ -7,4 +7,5 @@ import com.publiccar.code.model.Dispatch;
 public interface DispatchServiceInter {
 	public void insertDispatchService(HttpServletRequest req, Dispatch dispatch);
 	public void queryDispatchService(HttpServletRequest req, String currpage);
+	public String updateDispatchService(Dispatch dispatch);
 }
