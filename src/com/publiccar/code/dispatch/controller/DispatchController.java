@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.publiccar.code.dispatch.service.DispatchServiceInter;
 import com.publiccar.code.model.Dispatch;
 import com.publiccar.code.model.User;
+import com.publiccar.code.user.service.UserServiceInter;
 
 @Controller
 @RequestMapping("dispatchCtrl")
@@ -16,6 +18,8 @@ public class DispatchController {
 	
 	@Autowired
 	public DispatchServiceInter dispatchServiceInter;
+	@Autowired
+	public UserServiceInter userServiceInter;
 	
 	//申请车数据辆插入dispatch表
 	@RequestMapping("/insertDispatch")
@@ -31,18 +35,17 @@ public class DispatchController {
 		String dempname = user.getUserDemp();
 		if("车辆部门".equals(dempname)) {
 			return "driverdemp/dispatchs";
-		}else if("".equals(dempname) && dempname==null) {
-			return "officials/dispatchs";
-		}else {
+		}else if(dempname==null||"".equals(dempname)) {
 			return "driver/dispatchs";
+		}else {
+			return "officials/dispatchs";
 		}
 	}
 	//更新dispatch表、审核
 	@RequestMapping("/updateDispatch")
-	public String updatedispatchCtrl(HttpServletRequest req,String dispatchId) {
-		System.out.println(dispatchId);
-		return null;
-//		this.dispatchServiceInter.insertDispatchService(req, dispatch);
-//		return "redirect:/dispatchCtrl/queryDispatch?currpage=1";
+	@ResponseBody
+	public String updatedispatchCtrl(Dispatch dispatch) {
+		String flag = this.dispatchServiceInter.updateDispatchService(dispatch);
+		return flag;
 	}
 }

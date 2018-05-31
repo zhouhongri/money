@@ -12,8 +12,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path %>/css/pintuer.css">
 <link rel="stylesheet" href="<%=path %>/css/admin.css">
+<link rel="stylesheet" href="<%=path %>/css/layer.css">
 <script src="<%=path %>/js/jquery.js"></script>
 <script src="<%=path %>/js/pintuer.js"></script>
+<script src="<%=path %>/js/layer.js"></script>
 </head>
 <body>
 		<div class="panel admin-panel">
@@ -22,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<table class="table table-hover text-center">
 				<tr>
+					<th>申请人</th>
 					<th>车辆编号</th>
 					<th>承载人数</th>
 					<th>驾驶员</th>
@@ -33,6 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${list}" var="c">
 					<tr>
 						<%-- <td><input type="hidden" value="${c.dispatch_id}"/></td> --%>
+						<td>${c.applicant_name}</td>
 						<td>${c.car_id}</td>
 						<td>${c.dispatch_number}</td>
 						<td>${c.driver_name}</td>
@@ -49,13 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<b style="color: grey">审核未通过</b>
 							</c:if>
 						</td>
-						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('通过','${c.dispatch_id}');">通过</button></td>
-						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('未通过','${c.dispatch_id}');">未通过</button></td>
+						<c:choose>
+							<c:when test="${c.dispatch_status == '0'}">
+								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('通过','${c.dispatch_id}');">通过</button></td>
+								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('未通过','${c.dispatch_id}');">未通过</button></td>
+							</c:when>
+							<c:otherwise>
+								<td id="changebutton${c.dispatch_id}"><button class="button bg-main icon-check-square-o" disabled="disabled">已审核</button></td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</c:forEach>
 
 				<tr>
-					<td colspan="8"><div class="pagelist">
+					<td colspan="9"><div class="pagelist">
 							<c:if test="${currpage > 1}">
 								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
 							</c:if>
@@ -69,19 +80,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script>
 	$(function(){
-		//alert('${list}');
+		//layer.msg("审核失败！");
 	})
 	function reviewed(status,dispatchid){
-		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchId":'测试'},
+		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchStatus":status,"dispatchId":dispatchid},
 			function(result){
-				/* if(result=="success"){
+			if(result=="success"){
+				$(".clickbutton"+dispatchid).attr("disabled","disabled");
+				if(status=="通过"){
 					$("#"+dispatchid).html('<b style="color: green">审核通过</b>');
-				}else{
-					layer.msg("删除失败！");
-				} */
-			});
-			alert(dispatchid);
-			
+				}else if(status=="未通过"){
+					$("#"+dispatchid).html('<b style="color: grey">审核未通过</b>');
+				}
+			}else{
+				layer.msg("审核失败！");
+			}
+		});
 	}
 </script>
 </html>

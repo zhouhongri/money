@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 14:11:43 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +20,9 @@ public class Dispatch implements java.io.Serializable {
 	private Integer carId;
 	private Integer driverId;
 	private String driverName;
+	private String applicantName;
+	private String applicantSex;
+	private Integer applicantAge;
 	private Integer dempId;
 	private Integer dispatchTimeLength;
 	private Integer dispatchNumber;
@@ -29,11 +32,15 @@ public class Dispatch implements java.io.Serializable {
 	public Dispatch() {
 	}
 
-	public Dispatch(Integer carId, Integer driverId, String driverName, Integer dempId, Integer dispatchTimeLength,
-			Integer dispatchNumber, String dispatchReason, String dispatchStatus) {
+	public Dispatch(Integer carId, Integer driverId, String driverName, String applicantName, String applicantSex,
+			Integer applicantAge, Integer dempId, Integer dispatchTimeLength, Integer dispatchNumber,
+			String dispatchReason, String dispatchStatus) {
 		this.carId = carId;
 		this.driverId = driverId;
 		this.driverName = driverName;
+		this.applicantName = applicantName;
+		this.applicantSex = applicantSex;
+		this.applicantAge = applicantAge;
 		this.dempId = dempId;
 		this.dispatchTimeLength = dispatchTimeLength;
 		this.dispatchNumber = dispatchNumber;
@@ -78,6 +85,33 @@ public class Dispatch implements java.io.Serializable {
 
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
+	}
+
+	@Column(name = "applicant_name")
+	public String getApplicantName() {
+		return this.applicantName;
+	}
+
+	public void setApplicantName(String applicantName) {
+		this.applicantName = applicantName;
+	}
+
+	@Column(name = "applicant_sex")
+	public String getApplicantSex() {
+		return this.applicantSex;
+	}
+
+	public void setApplicantSex(String applicantSex) {
+		this.applicantSex = applicantSex;
+	}
+
+	@Column(name = "applicant_age")
+	public Integer getApplicantAge() {
+		return this.applicantAge;
+	}
+
+	public void setApplicantAge(Integer applicantAge) {
+		this.applicantAge = applicantAge;
 	}
 
 	@Column(name = "demp_id")
