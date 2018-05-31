@@ -20,7 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="panel-head">
 				<strong class="icon-reorder">申请车辆记录</strong> 
 			</div>
-
 			<table class="table table-hover text-center">
 				<tr>
 					<th>车辆编号</th>
@@ -33,12 +32,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<c:forEach items="${list}" var="c">
 					<tr>
+						<%-- <td><input type="hidden" value="${c.dispatch_id}"/></td> --%>
 						<td>${c.car_id}</td>
 						<td>${c.dispatch_number}</td>
 						<td>${c.driver_name}</td>
 						<td>${c.dispatch_time_length}</td>
 						<td>${c.dispatch_reason}</td>
-						<td>
+						<td id="${c.dispatch_id}">
 							<c:if test="${c.dispatch_status == '1'}">
 								<b style="color: green">审核通过</b>
 							</c:if>
@@ -49,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<b style="color: grey">审核未通过</b>
 							</c:if>
 						</td>
-						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('通过');">通过</button></td>
-						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('未通过');">未通过</button></td>
+						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('通过','${c.dispatch_id}');">通过</button></td>
+						<td><button class="button bg-main icon-check-square-o" onclick="reviewed('未通过','${c.dispatch_id}');">未通过</button></td>
 					</tr>
 				</c:forEach>
 
@@ -71,8 +71,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function(){
 		//alert('${list}');
 	})
-	function reviewed(status){
-		alert(status);
+	function reviewed(status,dispatchid){
+		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchId":'测试'},
+			function(result){
+				/* if(result=="success"){
+					$("#"+dispatchid).html('<b style="color: green">审核通过</b>');
+				}else{
+					layer.msg("删除失败！");
+				} */
+			});
+			alert(dispatchid);
+			
 	}
 </script>
 </html>

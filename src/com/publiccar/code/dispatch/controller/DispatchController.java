@@ -28,6 +28,21 @@ public class DispatchController {
 	public String queryDispatchCtrl(HttpServletRequest req, String currpage) {
 		this.dispatchServiceInter.queryDispatchService(req, currpage);
 		User user = (User) req.getSession().getAttribute("user");
-		return "officials/dispatchs";
+		String dempname = user.getUserDemp();
+		if("车辆部门".equals(dempname)) {
+			return "driverdemp/dispatchs";
+		}else if("".equals(dempname) && dempname==null) {
+			return "officials/dispatchs";
+		}else {
+			return "driver/dispatchs";
+		}
+	}
+	//更新dispatch表、审核
+	@RequestMapping("/updateDispatch")
+	public String updatedispatchCtrl(HttpServletRequest req,String dispatchId) {
+		System.out.println(dispatchId);
+		return null;
+//		this.dispatchServiceInter.insertDispatchService(req, dispatch);
+//		return "redirect:/dispatchCtrl/queryDispatch?currpage=1";
 	}
 }
