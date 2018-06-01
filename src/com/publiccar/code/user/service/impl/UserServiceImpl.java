@@ -1,5 +1,7 @@
 package com.publiccar.code.user.service.impl;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,32 @@ public class UserServiceImpl implements UserServiceInter{
 	public User getUserByIdService(User user) {
 		User userInstance = this.userDaoInter.getUserByIdDao(user);
 		return userInstance;
+	}
+
+	@Override
+	public void insertUserService(User user) {
+		this.userDaoInter.insertUserDao(user);
+	}
+
+	@Override
+	public String delUserService(User user) {
+		int num = this.userDaoInter.delUserDao(user);
+		if(num == 1) {
+			return "success";
+		}else {
+			return "false";
+		}
+	}
+
+	@Override
+	public void updateUserService(User user) {
+		this.userDaoInter.updateUserDao(user);
+	}
+
+	@Override
+	public void queryUserService(HttpServletRequest req, String currpage) {
+		int intcurrpage = Integer.parseInt(currpage);
+		this.userDaoInter.queryUserDao(req, intcurrpage);
 	}
 	
 }

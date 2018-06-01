@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -71,7 +71,7 @@ public class Peccancy implements java.io.Serializable {
 		this.peccancyContent = peccancyContent;
 	}
 
-	@Column(name = "peccancy_date", length = 0)
+	@Column(name = "peccancy_date")
 	public String getPeccancyDate() {
 		return this.peccancyDate;
 	}

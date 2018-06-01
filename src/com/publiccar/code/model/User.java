@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class User implements java.io.Serializable {
 
 	private Integer userId;
-	private Integer dempId;
 	private String userUsername;
 	private String userPassword;
 	private String userIdentity;
@@ -30,9 +29,8 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(Integer dempId, String userUsername, String userPassword, String userIdentity, String userName,
-			String userSex, Integer userAge, String userDemp, String userMoney) {
-		this.dempId = dempId;
+	public User(String userUsername, String userPassword, String userIdentity, String userName, String userSex,
+			Integer userAge, String userDemp, String userMoney) {
 		this.userUsername = userUsername;
 		this.userPassword = userPassword;
 		this.userIdentity = userIdentity;
@@ -53,15 +51,6 @@ public class User implements java.io.Serializable {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-	@Column(name = "demp_id")
-	public Integer getDempId() {
-		return this.dempId;
-	}
-
-	public void setDempId(Integer dempId) {
-		this.dempId = dempId;
 	}
 
 	@Column(name = "user_username", length = 100)

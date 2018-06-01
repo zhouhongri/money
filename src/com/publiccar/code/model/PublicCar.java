@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-28 15:25:30 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

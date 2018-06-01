@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-31 14:11:43 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,6 @@ public class Dispatch implements java.io.Serializable {
 	private String applicantName;
 	private String applicantSex;
 	private Integer applicantAge;
-	private Integer dempId;
 	private Integer dispatchTimeLength;
 	private Integer dispatchNumber;
 	private String dispatchReason;
@@ -33,15 +32,14 @@ public class Dispatch implements java.io.Serializable {
 	}
 
 	public Dispatch(Integer carId, Integer driverId, String driverName, String applicantName, String applicantSex,
-			Integer applicantAge, Integer dempId, Integer dispatchTimeLength, Integer dispatchNumber,
-			String dispatchReason, String dispatchStatus) {
+			Integer applicantAge, Integer dispatchTimeLength, Integer dispatchNumber, String dispatchReason,
+			String dispatchStatus) {
 		this.carId = carId;
 		this.driverId = driverId;
 		this.driverName = driverName;
 		this.applicantName = applicantName;
 		this.applicantSex = applicantSex;
 		this.applicantAge = applicantAge;
-		this.dempId = dempId;
 		this.dispatchTimeLength = dispatchTimeLength;
 		this.dispatchNumber = dispatchNumber;
 		this.dispatchReason = dispatchReason;
@@ -112,15 +110,6 @@ public class Dispatch implements java.io.Serializable {
 
 	public void setApplicantAge(Integer applicantAge) {
 		this.applicantAge = applicantAge;
-	}
-
-	@Column(name = "demp_id")
-	public Integer getDempId() {
-		return this.dempId;
-	}
-
-	public void setDempId(Integer dempId) {
-		this.dempId = dempId;
 	}
 
 	@Column(name = "dispatch_time_length")
