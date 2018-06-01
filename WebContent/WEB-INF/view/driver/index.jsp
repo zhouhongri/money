@@ -56,14 +56,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <h2>
 					<span class="icon-pencil-square-o"></span>违章管理</h2>
 		  <ul>
-		    <li><a href="<%=path %>/rapairCtrl/selectrapair?currpage=1" target="right"><span
+		    <li><a href="<%=path %>/peccancy/selectpeccancy?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询违章记录</a></li>
 			
 		  </ul>  
 		  <h2>
 					<span class="icon-pencil-square-o"></span>保险管理</h2>
 		  <ul>
-		    <li><a href="<%=path %>/rapairCtrl/selectrapair?currpage=1" target="right"><span
+		    <li><a href="<%=path %>/insurance/selectinsurance?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询保险记录</a></li>
 			
 		  </ul>  
