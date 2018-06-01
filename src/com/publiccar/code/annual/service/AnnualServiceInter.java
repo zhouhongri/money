@@ -11,8 +11,8 @@ public interface AnnualServiceInter {
 	    public void selectannual(HttpServletRequest req, String currpage);
 		
 		public PublicCar queryannual(HttpServletRequest req);
-//		
+		
 		public void insertannual(HttpServletRequest req,Annual annual);
-//		
+	
 		public void deleteannual(HttpServletRequest req,Annual annual);
 }

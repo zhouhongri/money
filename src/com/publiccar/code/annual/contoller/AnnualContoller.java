@@ -12,32 +12,32 @@ import com.publiccar.code.model.Annual;
 import com.publiccar.code.model.Consumption;
 import com.publiccar.code.model.PublicCar;
 
-   //年检管理
+   //骞存绠＄悊
 	@Controller
 	@RequestMapping("annual")
     public class AnnualContoller {
 		@Autowired
 		private  AnnualServiceInter annualservice;
-		//查询年检列表
+		//鏌ヨ骞存鍒楄〃
 		@RequestMapping("/selectannual")
 		 public String selectannual(HttpServletRequest req, String currpage) {
 		       this.annualservice.selectannual(req, currpage);
 		       return "driver/annuallist";
 		}
-		//跳转新增页面
+		//璺宠浆骞存鏂板椤甸潰
 			@RequestMapping("/queryannual")
 				public String queryannual(HttpServletRequest req) {
 				PublicCar car = this.annualservice.queryannual(req);
 				req.setAttribute("PublicCar", car);
 					return "driver/annual_add";
 				}
-			//添加年检信息
+			//骞存鏂板
 				@RequestMapping("/insertannual")
 				public String insertannual(HttpServletRequest req,Annual annual ) {
 					this.annualservice.insertannual(req, annual);
 					return "driver/annual_add";
 				}
-			//删除年检信息
+			//鍒犻櫎骞存
 				@RequestMapping("/deleteannual")
 				public String deleteannual(HttpServletRequest req,Annual annual) {
 			        this.annualservice.deleteannual(req, annual);
