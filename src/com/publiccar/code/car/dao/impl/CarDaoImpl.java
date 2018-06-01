@@ -36,5 +36,14 @@ public class CarDaoImpl extends BaseDao implements CarDaoInter{
 		PageUtil pageUtil = new PageUtil();
 	    pageUtil.doPage(sql, this.getSession(), req, currpage);
 	}
+
+	@Override
+	public int delCarByIdDao(PublicCar publicCar) {
+		Session session = this.getSession();
+		String hql = "delete from PublicCar where carId=?";
+		Query query = session.createQuery(hql);
+		query.setInteger(0, publicCar.getCarId());
+		return query.executeUpdate();
+	}
 	
 }

@@ -7,4 +7,5 @@ import com.publiccar.code.model.PublicCar;
 public interface CarServiceInter {
 	public String queryCarService(HttpServletRequest req, String currpage);
 	public PublicCar queryCarByIdService(PublicCar publicCar);
+	public String delCarByIdService(PublicCar publicCar);
 }

@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		"userPassword":userpassword},function(result){
 			if(result.result){
 				if(result.useridentity=="管理员"){
-					window.location.href="";
+					window.location.href="<%=path %>/common/admin/index";
 				}else if(result.useridentity=="驾驶员"){
 					window.location.href="<%=path %>/common/driver/index";
 				}else if(result.useridentity=="车辆部门负责人"){

@@ -24,7 +24,6 @@ public class DispatchServiceImpl implements DispatchServiceInter{
 		dispatch.setApplicantName(user.getUserName());
 		dispatch.setApplicantSex(user.getUserSex());
 		dispatch.setApplicantAge(user.getUserAge());
-		dispatch.setDempId(user.getDempId());
 		dispatch.setDispatchStatus("0");
 		this.dispatchDaoInter.insertDispatchDao(dispatch);
 	}

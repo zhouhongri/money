@@ -8,4 +8,5 @@ public interface CarDaoInter {
 	public void queryCars(HttpServletRequest req, int currpage, String dempName);
 	public void queryCars(HttpServletRequest req, int currpage);
 	public PublicCar qyeryCarById(PublicCar publicCar);
+	public int delCarByIdDao(PublicCar publicCar);
 }

@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-23 17:35:35 by Hibernate Tools 4.0.1.Final
+// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,16 +19,14 @@ public class Income implements java.io.Serializable {
 	private Integer incomeId;
 	private Integer carId;
 	private Integer driverId;
-	private Integer dempId;
 	private String incomeSumMoney;
 
 	public Income() {
 	}
 
-	public Income(Integer carId, Integer driverId, Integer dempId, String incomeSumMoney) {
+	public Income(Integer carId, Integer driverId, String incomeSumMoney) {
 		this.carId = carId;
 		this.driverId = driverId;
-		this.dempId = dempId;
 		this.incomeSumMoney = incomeSumMoney;
 	}
 
@@ -60,15 +58,6 @@ public class Income implements java.io.Serializable {
 
 	public void setDriverId(Integer driverId) {
 		this.driverId = driverId;
-	}
-
-	@Column(name = "demp_id")
-	public Integer getDempId() {
-		return this.dempId;
-	}
-
-	public void setDempId(Integer dempId) {
-		this.dempId = dempId;
 	}
 
 	@Column(name = "income_sum_money", length = 100)

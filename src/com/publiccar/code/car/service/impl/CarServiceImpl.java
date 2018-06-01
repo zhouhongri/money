@@ -25,6 +25,9 @@ public class CarServiceImpl implements CarServiceInter{
 		if("车辆部门".equals(dempName)) {
 			this.carDaoInter.queryCars(req, intcurrpage);
 			return "车辆部门";
+		}else if("管理员".equals(dempName)) {
+			this.carDaoInter.queryCars(req, intcurrpage);
+			return "管理员";
 		}else {
 			this.carDaoInter.queryCars(req, intcurrpage, dempName);
 			return "用车官员";
@@ -34,6 +37,15 @@ public class CarServiceImpl implements CarServiceInter{
 	public PublicCar queryCarByIdService(PublicCar publicCar) {
 		PublicCar car = this.carDaoInter.qyeryCarById(publicCar);
 		return car;
+	}
+	@Override
+	public String delCarByIdService(PublicCar publicCar) {
+		int num = this.carDaoInter.delCarByIdDao(publicCar);
+		if(num==1) {
+			return "success";
+		}else {
+			return "flase";
+		}
 	}
 	
 }
