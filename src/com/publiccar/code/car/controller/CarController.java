@@ -1,5 +1,7 @@
 package com.publiccar.code.car.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -38,7 +40,7 @@ public class CarController {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
 		req.setAttribute("PublicCar", car);
-		if("管理员".equals(user.getUserDemp())) {
+		if("0".equals(user.getUserIdentity())) {
 			return "admin/cars_update";
 		}else {
 			return "officials/cars_update";
@@ -50,5 +52,24 @@ public class CarController {
 	public String delCarByIdCtrl(PublicCar publicCar) {
 		String flag = this.carServiceInter.delCarByIdService(publicCar);
 		return flag;
+	}
+	//更新车辆信息
+	@RequestMapping("/updateCar")
+	public String updateCar(PublicCar publicCar) {
+		this.carServiceInter.updateCarService(publicCar);
+		return "redirect:/carCtrl/queryCar?currpage=1";
+	}
+	//添加车辆信息
+	@RequestMapping("/insertCar")
+	public String insertCar(PublicCar publicCar, User user) {
+		this.carServiceInter.insertCarService(publicCar, user);
+		return "redirect:/carCtrl/queryCar?currpage=1";
+	}
+	//查询已入User库但是没有分配车辆身份为驾驶员的信息
+	@RequestMapping("/queryOtherDriverName")
+	@ResponseBody
+	public List queryOtherDriverName() {
+		List<User> list = this.carServiceInter.queryOtherDriverNameSerive();
+		return list;
 	}
 }

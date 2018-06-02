@@ -1,5 +1,7 @@
 package com.publiccar.code.user.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,16 @@ public class UserServiceImpl implements UserServiceInter{
 	public void queryUserService(HttpServletRequest req, String currpage) {
 		int intcurrpage = Integer.parseInt(currpage);
 		this.userDaoInter.queryUserDao(req, intcurrpage);
+	}
+
+	@Override
+	public String checkUsernameService(User user) {
+		List list = this.userDaoInter.checkUsernameDao(user);
+		if(list.size()>0) {
+			return "exist";
+		}else {
+			return "noexist";
+		}
 	}
 	
 }

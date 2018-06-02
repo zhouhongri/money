@@ -16,62 +16,86 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>申请用车</strong></div>
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>修改用户信息</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="<%=path %>/dispatchCtrl/insertDispatch">
+    <form method="post" class="form-x" action="<%=path %>/userCtrl/updateUser">
+    <input type="hidden" name="userId" value="${User.userId}">
       <div class="form-group">
-      <input type="hidden" class="input"  name="carId" value="${PublicCar.carId}" style="width:25%; float:left"/>
-      <input type="hidden" class="input"  name="driverId" value="${PublicCar.driverId}" style="width:25%; float:left"/>
         <div class="label">
-          <label>车辆类型：</label>
+          <label>用户名：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" readonly="readonly" value="${PublicCar.carType}" style="width:25%; float:left" />
+          <input type="text" class="input" readonly="readonly" name="userUsername" value="${User.userUsername}" style="width:25%; float:left" />
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>驾驶员：</label>
+          <label>密码：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" readonly="readonly" name="driverName" value="${PublicCar.driverName}" style="width:25%; float:left"/>
+          <input type="text" class="input" name="userPassword" value="${User.userPassword}" style="width:25%; float:left" 
+          data-validate="required:请输密码"/>
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>用车人数：</label>
+          <label>用户身份：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dispatchNumber" value="" 
-          style="width:25%; float:left" placeholder="请输入用车人数" data-validate="required:请输入用车人数"
-          oninput="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') "/>
+          <input type="text" id="userIdentityipt" class="input" readonly="readonly" value="" style="width:25%; float:left" />
+          <input type="hidden" name="userIdentity" value="${User.userIdentity}">
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>用车时长：</label>
+          <label>真实姓名：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dispatchTimeLength" value="" 
-          style="width:25%; float:left" placeholder="请输入用车时长" data-validate="required:请输入用车时长"
-          oninput="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') "/>
+          <input type="text" class="input" readonly="readonly" name="userName" value="${User.userName}" style="width:25%; float:left" />
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>用车原因：</label>
+          <label>性别：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dispatchReason" value="" 
-          style="width:25%; float:left" placeholder="请输入用车原因"/>
+          <input type="text" class="input" readonly="readonly" name="userSex" value="${User.userSex}" style="width:25%; float:left" />
           <div class="tips"></div>
         </div>
       </div>
-      
+      <div class="form-group">
+        <div class="label">
+          <label>年龄：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="userAge" value="${User.userAge}" style="width:25%; float:left" 
+          data-validate="required:请输年龄"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>所属部门：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" readonly="readonly" name="userDemp" value="${User.userDemp}" style="width:25%; float:left" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>薪资：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="userMoney" value="${User.userMoney}" style="width:25%; float:left" 
+          data-validate="required:请输薪资数量"/>
+          <div class="tips"></div>
+        </div>
+      </div>
       <div class="form-group">
         <div class="label">
           <label></label>
@@ -83,4 +107,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
 </div>
 </body>
+<script type="text/javascript">
+	$(function(){
+		if('${User.userIdentity}'=='0'){
+			$("#userIdentityipt").val("管理员");
+		}else if('${User.userIdentity}'=='1'){
+			$("#userIdentityipt").val("驾驶员");
+		}else if('${User.userIdentity}'=='2'){
+			$("#userIdentityipt").val("车辆部门负责人");
+		}else{
+			$("#userIdentityipt").val("用车官员");
+		}
+		<%-- $.post("<%=path %>/dempCtrl/queryDempName",{},
+			function(result){
+			for(var i in result){
+				$("#userDempSelect").append("<option value='"+result[i].dempName+"'>"+result[i].dempName+"</option>");
+			}
+		}); --%>
+	})
+</script>
 </html>

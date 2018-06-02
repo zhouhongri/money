@@ -12,10 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path %>/css/pintuer.css">
 <link rel="stylesheet" href="<%=path %>/css/admin.css">
-<link rel="stylesheet" href="<%=path %>/css/layer.css">
 <script src="<%=path %>/js/jquery.js"></script>
 <script src="<%=path %>/js/pintuer.js"></script>
-<script src="<%=path %>/js/layer.js"></script>
 </head>
 <body>
 		<div class="panel admin-panel">
@@ -31,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th>驾驶员</th>
 					<th>性别</th>
 					<th>年龄</th>
+					<th>年检状态</th>
+					<th>保险状态</th>
 					<th colspan="2">操作</th>
 				</tr>
 				<c:forEach items="${list}" var="c">
@@ -41,6 +41,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${c.driver_name}</td>
 						<td>${c.driver_sex}</td>
 						<td>${c.driver_age}</td>
+						<c:if test="${c.car_annual_status=='0'}">
+							<td>已年检</td>
+						</c:if>
+						<c:if test="${c.car_annual_status=='1'}">
+							<td>未年检</td>
+						</c:if>
+						<c:if test="${c.car_insurance_status=='0'}">
+							<td>已入保险</td>
+						</c:if>
+						<c:if test="${c.car_insurance_status=='1'}">
+							<td>未入保险</td>
+						</c:if>
 						<td><div class="button-group">
 								<a class="button border-main"
 									onclick="del(${c.car_id});"><span
@@ -54,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 
 				<tr>
-					<td colspan="8"><div class="pagelist">
+					<td colspan="10"><div class="pagelist">
 							<c:if test="${currpage > 1}">
 								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
 							</c:if>

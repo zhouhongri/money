@@ -1,6 +1,6 @@
 package com.publiccar.code.model;
 // default package
-// Generated 2018-5-31 19:20:17 by Hibernate Tools 4.0.1.Final
+// Generated 2018-6-2 13:44:17 by Hibernate Tools 4.0.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,13 +27,14 @@ public class Dispatch implements java.io.Serializable {
 	private Integer dispatchNumber;
 	private String dispatchReason;
 	private String dispatchStatus;
+	private Integer userId;
 
 	public Dispatch() {
 	}
 
 	public Dispatch(Integer carId, Integer driverId, String driverName, String applicantName, String applicantSex,
 			Integer applicantAge, Integer dispatchTimeLength, Integer dispatchNumber, String dispatchReason,
-			String dispatchStatus) {
+			String dispatchStatus, Integer userId) {
 		this.carId = carId;
 		this.driverId = driverId;
 		this.driverName = driverName;
@@ -44,6 +45,7 @@ public class Dispatch implements java.io.Serializable {
 		this.dispatchNumber = dispatchNumber;
 		this.dispatchReason = dispatchReason;
 		this.dispatchStatus = dispatchStatus;
+		this.userId = userId;
 	}
 
 	@Id
@@ -146,6 +148,15 @@ public class Dispatch implements java.io.Serializable {
 
 	public void setDispatchStatus(String dispatchStatus) {
 		this.dispatchStatus = dispatchStatus;
+	}
+
+	@Column(name = "user_id")
+	public Integer getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

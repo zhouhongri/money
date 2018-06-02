@@ -33,16 +33,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <ul>
 		    <li><a href="<%=path %>/carCtrl/queryCar?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询车辆信息</a></li>
-			<li><a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=1" target="right"><span
+			<li><a href="<%=path %>/common/admin/cars_add" target="right"><span
 							class="icon-caret-right"></span>添加车辆信息</a></li>
 		  </ul>  
 		   <h2>
 					<span class="icon-pencil-square-o"></span>用户管理</h2>
 		  <ul>
-		    <li><a href="<%=path %>/carCtrl/queryCar?currpage=1" target="right"><span
+		    <li><a href="<%=path %>/userCtrl/queryUser?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询用户信息</a></li>
-			<li><a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=1" target="right"><span
+			<li><a href="<%=path %>/common/admin/users_add" target="right"><span
 							class="icon-caret-right"></span>添加用户信息</a></li>
+		  </ul>  
+		  <h2>
+					<span class="icon-pencil-square-o"></span>部门管理</h2>
+		  <ul>
+		    <li><a href="<%=path %>/dempCtrl/queryDemp?currpage=1" target="right"><span
+							class="icon-caret-right"></span>查询部门信息</a></li>
+			<li><a href="<%=path %>/common/admin/demps_add" target="right"><span
+							class="icon-caret-right"></span>添加部门信息</a></li>
 		  </ul>  
 </div>
 <script type="text/javascript">

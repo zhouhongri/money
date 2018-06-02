@@ -24,13 +24,14 @@ public class DispatchDaoImpl extends BaseDao implements DispatchDaoInter{
 
 	@Override
 	public void queryDispatchDao(HttpServletRequest req, int currpage) {
-		String sql;
 		User user = (User) req.getSession().getAttribute("user");
-		String dempname = user.getUserDemp();
-		if(dempname==null||"".equals(dempname)) {
-			sql = "select * from dispatch where driver_id='"+user.getUserId()+"' and dispatch_status='1'";
-		}else {
-			sql = "select * from dispatch";
+		String userIdentity = user.getUserIdentity();
+		String sql = "select * from dispatch where 1=1 ";
+		if("3".equals(userIdentity)) {
+			sql += " and user_id='"+user.getUserId()+"'";
+		}
+		if("1".equals(userIdentity)) {
+			sql += " and driver_id='"+user.getUserId()+"' and dispatch_status in('1','3')";
 		}
 		PageUtil pageUtil = new PageUtil();
 	    pageUtil.doPage(sql, this.getSession(), req, currpage);
