@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.publiccar.code.insurance.dao.InsuranceDaoInter;
 import com.publiccar.code.model.Insurance;
+import com.publiccar.code.model.Peccancy;
 import com.publiccar.code.model.PublicCar;
 
 import framework.base.BaseDao;
@@ -44,4 +45,23 @@ public class InsuranceDaoImpl extends BaseDao implements InsuranceDaoInter {
 		Session session = this.getSession();
 		session.delete(insurance);
 	}
+	
+	@Override
+	public int updatepubliccardate(Integer carId,String insuranceEnddate) {
+		Session session = this.getSession();
+		String hql = "update PublicCar set carInsuranceEndtime='"+insuranceEnddate+"' where carId=?";
+		Query query = session.createQuery(hql);
+		query.setInteger(0, carId);
+		return query.executeUpdate();
+	}
+	@Override
+	public void queryinsuranceid(Insurance insurance,HttpServletRequest req, int currpage){
+		Integer insuranceId = insurance.getInsuranceId();
+		Session session = this.getSession();
+		List<PublicCar> conlist = new ArrayList<PublicCar>();
+		String sql = "select * from insurance where insurance_id =  "+"'"+insuranceId+"'";
+		PageUtil pageUtil = new PageUtil();
+	    pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
+
 }

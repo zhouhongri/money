@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.publiccar.code.model.Peccancy;
 import com.publiccar.code.model.PublicCar;
+import com.publiccar.code.model.Repair;
 import com.publiccar.code.model.User;
 import com.publiccar.code.peccancy.dao.PeccancyDaoInter;
 import com.publiccar.code.peccancy.service.PeccancyServiceInter;
@@ -42,5 +43,9 @@ public class PeccancyServiceImpl implements PeccancyServiceInter {
 	public void deletepeccancy(HttpServletRequest req, Peccancy peccancy) {
 		this.peccancyDao.deletepeccancy(peccancy);
 
+	}
+	@Override
+	public void querypeccancyid(HttpServletRequest req,Peccancy peccancy) {
+		this.peccancyDao.querypeccancyid(peccancy,req,1);
 	}
 }

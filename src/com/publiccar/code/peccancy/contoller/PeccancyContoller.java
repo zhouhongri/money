@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.publiccar.code.peccancy.service.PeccancyServiceInter;
 import com.publiccar.code.model.Peccancy;
 import com.publiccar.code.model.PublicCar;
+import com.publiccar.code.model.Repair;
 
 
 	//违章管理
@@ -42,4 +43,11 @@ import com.publiccar.code.model.PublicCar;
 			        this.peccancySercice.deletepeccancy(req, peccancy);
 					return "redirect:/peccancy/selectpeccancy?currpage=1";
 				}	
+				
+				//违章信息编号查询
+				@RequestMapping("/querypeccancyid")
+				public String querypeccancyid(HttpServletRequest req,Peccancy peccancy) {
+					this.peccancySercice.querypeccancyid(req, peccancy);
+					return "driver/peccancylist";
+				}		
 }

@@ -25,12 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a class="button border-main icon-plus-square-o"
 						href="<%=path %>/consumption/queryconsumption"> 添加加油记录</a></li>
 					<li>搜索：</li>
-					<li><input type="text" placeholder="请输入搜索关键字" id="keywords"
-						name="keywords" class="input"
+					<li><input type="text" placeholder="请输入搜索关键字" id="consumptionid"
+						name="consumptionid" class="input"
 						style="width: 250px; line-height: 17px; display: inline-block" />
-						<a href="javascript:void(0)"
-						class="button border-main icon-search" onclick="changesearch()">
-							普通用户编号搜索</a></li>
+						<a class="button border-main icon-search" onclick="query();">
+							加油编号搜索</a></li>
 				</ul>
 			</div>
 			<table class="table table-hover text-center">
@@ -74,8 +73,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 </body>
 <script>
-	$(function(){
-		
-	})
+function query(){
+	var consumptionid = $("#consumptionid").val();
+	window.location.href="<%=path %>/consumption/queryconsumptionid?consumptionId="+consumptionid;
+}
+
 </script>
 </html>

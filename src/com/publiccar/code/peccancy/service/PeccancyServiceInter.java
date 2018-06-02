@@ -15,5 +15,7 @@ public interface PeccancyServiceInter {
 	public void insertpeccancy(HttpServletRequest req,Peccancy peccancy);
 	
 	public void deletepeccancy(HttpServletRequest req,Peccancy peccancy);
+	
+	public void querypeccancyid(HttpServletRequest req,Peccancy peccancy);
 
 }

@@ -36,15 +36,21 @@ public class AnnualServiceImpl implements AnnualServiceInter {
 
 	@Override
 	public void insertannual(HttpServletRequest req, Annual annual) {
+		Integer carId = annual.getCarId();
+		String annualEndate = annual.getAnnualEndate();
+		this.annualdao.updatepubliccardate(carId, annualEndate);
 		annual.setAnnualContent("0");
 		this.annualdao.insertannual(annual);
 	}
 
 	@Override
 	public void deleteannual(HttpServletRequest req, Annual annual) {
-		this.annualdao.deleteannual(annual);
+				this.annualdao.deleteannual(annual);
 
 	}
-
+	@Override
+	public void queryannualid(HttpServletRequest req, Annual annual) {
+		this.annualdao.queryannualid(annual,req,1);
+	}
 
 }

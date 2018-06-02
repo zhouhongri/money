@@ -15,4 +15,6 @@ public interface AnnualServiceInter {
 		public void insertannual(HttpServletRequest req,Annual annual);
 	
 		public void deleteannual(HttpServletRequest req,Annual annual);
+		
+		public void queryannualid(HttpServletRequest req,Annual annual);
 }

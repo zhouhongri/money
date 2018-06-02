@@ -9,6 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import com.publiccar.code.model.Annual;
 import com.publiccar.code.model.Dispatch;
 import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.Repair;
@@ -49,5 +50,15 @@ public class RepairDaoImpl extends BaseDao implements RepairDaoInter {
 		Session session = this.getSession();
 		session.delete(repair);
 	}
+	@Override
+	public void queryrapairid(Repair repair,HttpServletRequest req, int currpage){
+		Integer repairId = repair.getRepairId();
+		Session session = this.getSession();
+		List<PublicCar> conlist = new ArrayList<PublicCar>();
+		String sql = "select * from repair where repair_id =  "+"'"+repairId+"'";
+		PageUtil pageUtil = new PageUtil();
+	    pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
+
 
 }

@@ -31,7 +31,7 @@ import com.publiccar.code.model.PublicCar;
 				req.setAttribute("PublicCar", car);
 					return "driver/annual_add";
 				}
-			//年检新增
+			//年检新增、改变车辆表年检到期时间
 				@RequestMapping("/insertannual")
 				public String insertannual(HttpServletRequest req,Annual annual ) {
 					this.annualservice.insertannual(req, annual);
@@ -43,6 +43,14 @@ import com.publiccar.code.model.PublicCar;
 			        this.annualservice.deleteannual(req, annual);
 					return "redirect:/annual/selectannual?currpage=1";
 				}		
-
+				
+				//年检编号查询
+				@RequestMapping("/queryannualid")
+				public String queryannualid(HttpServletRequest req,Annual annual) {
+					this.annualservice.queryannualid(req, annual);
+					return "driver/annuallist";
+				}		
 	}
+
+	
 
