@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <form method="post" class="form-x" action="<%=path %>/annual/insertannual">
       <div class="form-group">
       <input type="hidden" class="input"  name="carId" value="${PublicCar.carId}" style="width:25%; float:left"/>
-      <input type="hidden" class="input"  name="driverId" value="${PublicCar.driverId}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="driverId"" value="${PublicCar.driverId}" style="width:25%; float:left"/>
         <div class="label">
           <label>车辆编号：</label>
         </div>

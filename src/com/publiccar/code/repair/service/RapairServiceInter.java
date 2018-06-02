@@ -14,4 +14,6 @@ public interface RapairServiceInter {
 	public void insertrapair(HttpServletRequest req,Repair repair);
 	
 	public void deleterapair(HttpServletRequest req,Repair repair);
+	
+	public void queryrapairid(HttpServletRequest req,Repair rapair); 
 }

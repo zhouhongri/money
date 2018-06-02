@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.publiccar.code.model.Peccancy;
 import com.publiccar.code.model.PublicCar;
+import com.publiccar.code.model.Repair;
 import com.publiccar.code.peccancy.dao.PeccancyDaoInter;
 
 import framework.base.BaseDao;
@@ -44,4 +45,15 @@ public class PeccancyDaoImpl extends BaseDao implements PeccancyDaoInter {
 		Session session = this.getSession();
 		session.delete(peccancy);
 	}
+	
+	@Override
+	public void querypeccancyid(Peccancy peccancy,HttpServletRequest req, int currpage){
+		Integer peccancyId = peccancy.getPeccancyId();
+		Session session = this.getSession();
+		List<PublicCar> conlist = new ArrayList<PublicCar>();
+		String sql = "select * from peccancy where peccancy_id =  "+"'"+peccancyId+"'";
+		PageUtil pageUtil = new PageUtil();
+	    pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
+
 }

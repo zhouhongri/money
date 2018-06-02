@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.publiccar.code.insurance.dao.InsuranceDaoInter;
 import com.publiccar.code.insurance.service.InsuranceServiceInter;
 import com.publiccar.code.model.Insurance;
+import com.publiccar.code.model.Peccancy;
 import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.User;
 
@@ -34,6 +35,9 @@ public class InsuranceServiceImpl implements InsuranceServiceInter {
 
 	@Override
 	public void insertinsurance(HttpServletRequest req, Insurance insurance) {
+		Integer carId = insurance.getCarId();
+		String insuranceEnddate = insurance.getInsuranceEnddate();
+		this.insurancedao.updatepubliccardate(carId, insuranceEnddate);
 		this.insurancedao.insertinsurance(insurance);
 	}
 
@@ -41,6 +45,11 @@ public class InsuranceServiceImpl implements InsuranceServiceInter {
 	public void deleteinsurance(HttpServletRequest req, Insurance insurance) {
 		this.insurancedao.deleteinsurance(insurance);
 
+	}
+	
+	@Override
+	public void queryinsuranceid(HttpServletRequest req,Insurance insurance) {
+		this.insurancedao.queryinsuranceid(insurance,req,1);
 	}
 
 }

@@ -1,10 +1,14 @@
 package com.publiccar.code.consumption.contoller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.publiccar.code.consumption.service.ConsumptionServiceInter;
 import com.publiccar.code.model.Consumption;
@@ -42,5 +46,10 @@ public class ConsumptionContoller {
 		        this.consumptionSercice.deleteconsumption(req, consumption);
 				return "redirect:/consumption/selectconsumption?currpage=1";
 			}		
-
+			//油耗编号查询
+			@RequestMapping("/queryconsumptionid")
+			public String queryconsumptionid(HttpServletRequest req,Consumption consumption) {
+				this.consumptionSercice.queryconsumptionid(req, consumption);
+				return "driver/consumptionlist";
+			}		
 }

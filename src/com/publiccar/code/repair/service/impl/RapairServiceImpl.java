@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.publiccar.code.model.Annual;
 import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.Repair;
 import com.publiccar.code.model.User;
@@ -39,5 +40,10 @@ public class RapairServiceImpl implements RapairServiceInter {
 	@Override
 	public void deleterapair(HttpServletRequest req,Repair repair){
 		this.repairDao.deleterapair(repair);
+	}
+	
+	@Override
+	public void queryrapairid(HttpServletRequest req,Repair repair) {
+		this.repairDao.queryrapairid(repair,req,1);
 	}
 }

@@ -22,19 +22,32 @@ public class RepairContoller {
 	@RequestMapping("/selectrapair")
 	 public String selectrapair(HttpServletRequest req, String currpage) {
 	       this.repairSercice.selectrapair(req, currpage);
-	       return "officials/repairlist";
+	       return "driver/repairlist";
 	}
 	//跳转到添加维修信息页面
 	@RequestMapping("/queryrapair")
 		public String queryrapair(HttpServletRequest req) {
 		PublicCar car = this.repairSercice.queryrapair(req);
 		req.setAttribute("PublicCar", car);
-			return "officials/repaira_add";
+			return "driver/repaira_add";
 		}
 	//维修信息添加
 		@RequestMapping("/insertrapair")
 		public String insertrapair(HttpServletRequest req,Repair repair) {
 			this.repairSercice.insertrapair(req, repair);
-			return "redirect:/dispatchCtrl/queryDispatch?currpage=1";
+			return "driver/repaira_add";
 	}	
+		//删除维修信息
+		@RequestMapping("/deleterapair")
+		public String deleterapair(HttpServletRequest req,Repair rapair) {
+	        this.repairSercice.deleterapair(req, rapair);
+			return "redirect:/rapairCtrl/selectrapair?currpage=1";
+		}		
+		
+		//维修信息编号查询
+		@RequestMapping("/queryrapairid")
+		public String queryrapairid(HttpServletRequest req,Repair rapair) {
+			this.repairSercice.queryrapairid(req, rapair);
+			return "driver/repairlist";
+		}		
 }

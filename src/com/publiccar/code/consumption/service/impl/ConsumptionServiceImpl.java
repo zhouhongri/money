@@ -44,5 +44,9 @@ public class ConsumptionServiceImpl implements ConsumptionServiceInter {
 		this.consumptionDao.deleteconsumption(consumption);
 
 	}
-
+	@Override
+	public void queryconsumptionid(HttpServletRequest req, Consumption consumption) {
+		this.consumptionDao.queryconsumptionid(consumption,req,1);
+	}
+	
 }

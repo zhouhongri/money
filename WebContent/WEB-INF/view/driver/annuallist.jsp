@@ -25,12 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a class="button border-main icon-plus-square-o"
 						href="<%=path %>/annual/queryannual"> 添加年检记录</a></li>
 					<li>搜索：</li>
-					<li><input type="text" placeholder="请输入搜索关键字" id="keywords"
-						name="keywords" class="input"
+					<li><input type="text" placeholder="请输入搜索关键字" id="annualId"
+						name="annualId" class="input"
 						style="width: 250px; line-height: 17px; display: inline-block" />
-						<a href="javascript:void(0)"
-						class="button border-main icon-search" onclick="changesearch()">
-							普通用户编号搜索</a></li>
+						<a class="button border-main icon-search" onclick="query();">
+							年检编号搜索</a></li>
 				</ul>
 			</div>
 			<table class="table table-hover text-center">
@@ -47,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${a.annual_id}</td>
 						<td>${a.car_id}</td>
 						<td>${a.driver_id}</td>
-						<td>${a.annual_Begindate}</td>
-						<td>${a.annual_Endate}</td>
+						<td>${a.annual_begindate}</td>
+						<td>${a.annual_endate}</td>
 						<td><div class="button-group">
 								<a class="button border-main"href="<%=path %>/annual/deleteannual?annualId=${a.annual_id}">
 								<span class="icon-edit"></span>删除</a>
@@ -70,8 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 </body>
 <script>
-	$(function(){
-		
-	})
+function query(){
+	var annualId = $("#annualId").val();
+	window.location.href="<%=path %>/annual/queryannualid?annualId="+annualId;
+}
 </script>
 </html>

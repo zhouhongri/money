@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.publiccar.code.model.Annual;
 import com.publiccar.code.model.Repair;
 
 public interface RepairDaoInter {
@@ -13,5 +14,7 @@ public interface RepairDaoInter {
 	public void insertrapair(Repair repair);
 	
 	public void deleterapair(Repair repair);
+	
+	public void queryrapairid(Repair repair,HttpServletRequest req, int currpage);
 
 }

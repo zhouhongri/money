@@ -41,6 +41,12 @@ import com.publiccar.code.model.PublicCar;
 				public String deleteinsurance(HttpServletRequest req,Insurance insurance) {
 			        this.insuranceservice.deleteinsurance(req, insurance);
 					return "redirect:/insurance/selectinsurance?currpage=1";
+				}	
+				//违章信息编号查询
+				@RequestMapping("/queryinsuranceid")
+				public String queryinsuranceid(HttpServletRequest req,Insurance insurance) {
+					this.insuranceservice.queryinsuranceid(req, insurance);
+					return "driver/insurancelist";
 				}		
 
 }

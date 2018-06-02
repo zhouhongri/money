@@ -8,7 +8,7 @@ import com.publiccar.code.model.PublicCar;
 
 
 public interface ConsumptionServiceInter {
-	//≤È—Ø”Õ∫ƒ–≈œ¢
+	
     public void selectconsumption(HttpServletRequest req, String currpage);
 	
 	public PublicCar queryconsumption(HttpServletRequest req);
@@ -16,5 +16,7 @@ public interface ConsumptionServiceInter {
 	public void insertconsumption(HttpServletRequest req,Consumption consumption);
 	
 	public void deleteconsumption(HttpServletRequest req,Consumption consumption);
+	
+	public void queryconsumptionid(HttpServletRequest req,Consumption consumption);
 
 }

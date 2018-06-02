@@ -16,5 +16,9 @@ public interface AnnualDaoInter {
 	public void insertannual( Annual annual);
 //	
 	public void deleteannual(Annual annual);
+	
+	public int updatepubliccardate(Integer carId,String annualEndate);
+	
+	public void queryannualid(Annual annual,HttpServletRequest req, int currpage);
 
 }

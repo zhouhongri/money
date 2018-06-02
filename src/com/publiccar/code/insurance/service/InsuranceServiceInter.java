@@ -14,5 +14,7 @@ public interface InsuranceServiceInter {
 		public void insertinsurance(HttpServletRequest req,Insurance insurance);
 //		
 		public void deleteinsurance(HttpServletRequest req,Insurance insurance);
+		
+		public void queryinsuranceid(HttpServletRequest req,Insurance insurance);
 
 }

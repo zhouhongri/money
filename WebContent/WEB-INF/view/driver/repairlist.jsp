@@ -25,12 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a class="button border-main icon-plus-square-o"
 						href="<%=path %>/rapairCtrl/queryrapair"> 添加维修记录</a></li>
 					<li>搜索：</li>
-					<li><input type="text" placeholder="请输入搜索关键字" id="keywords"
-						name="keywords" class="input"
+					<li><input type="text" placeholder="请输入搜索关键字" id="repairId"
+						name="repairId" class="input"
 						style="width: 250px; line-height: 17px; display: inline-block" />
-						<a href="javascript:void(0)"
-						class="button border-main icon-search" onclick="changesearch()">
-							普通用户编号搜索</a></li>
+						<a class="button border-main icon-search" onclick="query();">
+							维修编号搜索</a></li>
 				</ul>
 			</div>
 			<table class="table table-hover text-center">
@@ -74,8 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 </body>
 <script>
-	$(function(){
-		//alert('${list}');
-	})
+function query(){
+	var repairId = $("#repairId").val();
+	window.location.href="<%=path %>/rapairCtrl/queryrapairid?repairId="+repairId;
+}
 </script>
 </html>
