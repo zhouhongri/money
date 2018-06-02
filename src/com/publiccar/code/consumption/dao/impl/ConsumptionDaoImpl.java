@@ -45,4 +45,25 @@ public class ConsumptionDaoImpl extends BaseDao implements ConsumptionDaoInter {
 		Session session = this.getSession();
 		session.delete(consumption);
 	}
+	
+	@Override
+//	public List queryconsumptionid(Consumption consumption){
+//		Integer consumptionid = consumption.getConsumptionId();
+//		Session session = this.getSession();
+//		List<PublicCar> conlist = new ArrayList<PublicCar>();
+//		String hql = "from Consumption where consumptionId =  ?";
+//		Query query = session.createQuery(hql);
+//		query.setInteger(0, consumptionid);
+//		conlist = query.list();
+//		return conlist;
+//	}
+	
+	public void queryconsumptionid(Consumption consumption,HttpServletRequest req, int currpage){
+		Integer consumptionid = consumption.getConsumptionId();
+		Session session = this.getSession();
+		List<PublicCar> conlist = new ArrayList<PublicCar>();
+		String sql = "select * from consumption where consumption_id =  "+"'"+consumptionid+"'";
+		PageUtil pageUtil = new PageUtil();
+	    pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
 }

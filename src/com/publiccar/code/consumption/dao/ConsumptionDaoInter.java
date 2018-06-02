@@ -16,5 +16,6 @@ public interface ConsumptionDaoInter {
 	public void insertconsumption(Consumption consumption);
 	
 	public void deleteconsumption(Consumption consumption);
-
+	
+	public void queryconsumptionid(Consumption consumption,HttpServletRequest req, int currpage);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.publiccar.code.model.Peccancy;
+import com.publiccar.code.model.Repair;
 
 public interface PeccancyDaoInter {
 	
@@ -14,5 +15,7 @@ public interface PeccancyDaoInter {
 	
 	public void insertpeccancy(Peccancy peccancy);
 	
-	public void deletepeccancy(Peccancy peccancy);
+	public void deletepeccancy(Peccancy  peccancy);
+	
+	public void querypeccancyid(Peccancy peccancy,HttpServletRequest req, int currpage);
 }
