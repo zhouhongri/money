@@ -47,6 +47,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<c:if test="${c.dispatch_status == '2'}">
 								<b style="color: grey">审核未通过</b>
 							</c:if>
+							<c:if test="${c.dispatch_status == '3'}">
+								<b style="color: grey">已完成</b>
+							</c:if>
 						</td>
 					</tr>
 				</c:forEach>
@@ -54,10 +57,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 					<td colspan="8"><div class="pagelist">
 							<c:if test="${currpage > 1}">
-								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
+								<a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage-1}">上一页</a>
 							</c:if>
 							<c:if test="${currpage < pagecount}">|当前${currpage}页/总${pagecount}页|
-        <a href="<%=path %>/carCtrl/queryCar?currpage=${currpage+1}">下一页</a>
+        <a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage+1}">下一页</a>
 							</c:if>
 						</div></td>
 				</tr>

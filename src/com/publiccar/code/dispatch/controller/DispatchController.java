@@ -32,10 +32,10 @@ public class DispatchController {
 	public String queryDispatchCtrl(HttpServletRequest req, String currpage) {
 		this.dispatchServiceInter.queryDispatchService(req, currpage);
 		User user = (User) req.getSession().getAttribute("user");
-		String dempname = user.getUserDemp();
-		if("车辆部门".equals(dempname)) {
+		String userIdentity = user.getUserIdentity();
+		if("2".equals(userIdentity)) {
 			return "driverdemp/dispatchs";
-		}else if(dempname==null||"".equals(dempname)) {
+		}else if("1".equals(userIdentity)) {
 			return "driver/dispatchs";
 		}else {
 			return "officials/dispatchs";

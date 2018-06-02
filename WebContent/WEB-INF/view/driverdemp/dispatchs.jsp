@@ -52,11 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<c:if test="${c.dispatch_status == '2'}">
 								<b style="color: grey">审核未通过</b>
 							</c:if>
+							<c:if test="${c.dispatch_status == '3'}">
+								<b style="color: grey">已完成</b>
+							</c:if>
 						</td>
 						<c:choose>
 							<c:when test="${c.dispatch_status == '0'}">
-								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('通过','${c.dispatch_id}');">通过</button></td>
-								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('未通过','${c.dispatch_id}');">未通过</button></td>
+								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('通过',${c.dispatch_id},${c.car_id}));">通过</button></td>
+								<td><button class="button bg-main icon-check-square-o clickbutton${c.dispatch_id}" onclick="reviewed('未通过',${c.dispatch_id},${c.car_id});">未通过</button></td>
 							</c:when>
 							<c:otherwise>
 								<td id="changebutton${c.dispatch_id}"><button class="button bg-main icon-check-square-o" disabled="disabled">已审核</button></td>
@@ -68,10 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 					<td colspan="9"><div class="pagelist">
 							<c:if test="${currpage > 1}">
-								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
+								<a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage-1}">上一页</a>
 							</c:if>
 							<c:if test="${currpage < pagecount}">|当前${currpage}页/总${pagecount}页|
-        <a href="<%=path %>/carCtrl/queryCar?currpage=${currpage+1}">下一页</a>
+        <a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage+1}">下一页</a>
 							</c:if>
 						</div></td>
 				</tr>
@@ -82,8 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function(){
 		//layer.msg("审核失败！");
 	})
-	function reviewed(status,dispatchid){
-		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchStatus":status,"dispatchId":dispatchid},
+	function reviewed(status,dispatchid,carid){
+		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchStatus":status,"dispatchId":dispatchid,"carId":carid},
 			function(result){
 			if(result=="success"){
 				$(".clickbutton"+dispatchid).attr("disabled","disabled");

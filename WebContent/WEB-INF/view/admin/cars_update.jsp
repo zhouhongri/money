@@ -18,15 +18,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="panel admin-panel">
   <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>申请用车</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="<%=path %>/dispatchCtrl/insertDispatch">
-      <div class="form-group">
-      <input type="hidden" class="input"  name="carId" value="${PublicCar.carId}" style="width:25%; float:left"/>
+    <form method="post" class="form-x" action="<%=path %>/carCtrl/updateCar">
       <input type="hidden" class="input"  name="driverId" value="${PublicCar.driverId}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="driverSex" value="${PublicCar.driverSex}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="driverAge" value="${PublicCar.driverAge}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="carAnnualStatus" value="${PublicCar.carAnnualStatus}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="carAnnualEndtime" value="${PublicCar.carAnnualEndtime}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="carInsuranceStatus" value="${PublicCar.carInsuranceStatus}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="carInsuranceEndtime" value="${PublicCar.carInsuranceEndtime}" style="width:25%; float:left"/>
+      <input type="hidden" class="input"  name="carStatus" value="${PublicCar.carStatus}" style="width:25%; float:left"/>
+      <div class="form-group">
         <div class="label">
-          <label>车辆类型：</label>
+          <label>车辆编号：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" readonly="readonly" value="${PublicCar.carType}" style="width:25%; float:left" />
+          <input type="text" name="carId" class="input" readonly="readonly" value="${PublicCar.carId}" style="width:25%; float:left" />
           <div class="tips"></div>
         </div>
       </div>
@@ -41,10 +47,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       <div class="form-group">
         <div class="label">
-          <label>用车人数：</label>
+          <label>车辆类型：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dispatchNumber" value="" 
+          <select name="carType" id="carTypeSelect" class="input w50">
+          	<option style="display: none;" value='${PublicCar.carType }'>${PublicCar.carType }</option>
+          	<option value='小型'>小型</option>
+          	<option value='中型'>中型</option>
+          	<option value='大型'>大型</option>
+          </select>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>支持人数：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="carNumber" value="${PublicCar.carNumber}" 
           style="width:25%; float:left" placeholder="请输入用车人数" data-validate="required:请输入用车人数"
           oninput="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') "/>
           <div class="tips"></div>
@@ -52,26 +72,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       <div class="form-group">
         <div class="label">
-          <label>用车时长：</label>
+          <label>部门名称：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dispatchTimeLength" value="" 
-          style="width:25%; float:left" placeholder="请输入用车时长" data-validate="required:请输入用车时长"
-          oninput="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') "/>
+          <input type="text" class="input" readonly="readonly" name="dempName" value="${PublicCar.driverName}" style="width:25%; float:left"/>
           <div class="tips"></div>
         </div>
       </div>
-      <div class="form-group">
-        <div class="label">
-          <label>用车原因：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input" name="dispatchReason" value="" 
-          style="width:25%; float:left" placeholder="请输入用车原因"/>
-          <div class="tips"></div>
-        </div>
-      </div>
-      
       <div class="form-group">
         <div class="label">
           <label></label>
@@ -83,4 +90,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+	
+})
+</script>
 </html>

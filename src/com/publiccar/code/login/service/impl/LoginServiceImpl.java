@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginServiceInter {
 		if(list.size()>0&&list!=null){
 			if(user.getUserPassword().equals(list.get(0).getUserPassword())){
 				result.put("result",true);
-				result.put("mess", "登陆成功");
+				result.put("mess", "登录成功");
 				session.setAttribute("user", list.get(0));
 				if("0".equals(list.get(0).getUserIdentity())){
 					result.put("useridentity", "管理员");

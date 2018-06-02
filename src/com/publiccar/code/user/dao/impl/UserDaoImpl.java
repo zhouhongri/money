@@ -1,5 +1,7 @@
 package com.publiccar.code.user.dao.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Query;
@@ -48,6 +50,15 @@ public class UserDaoImpl extends BaseDao implements UserDaoInter{
 		String sql = "select * from user";
 		PageUtil pageUtil = new PageUtil();
 		pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
+
+	@Override
+	public List checkUsernameDao(User user) {
+		Session session = this.getSession();
+		String hql = "from User where userUsername=?";
+		Query query = session.createQuery(hql);
+		query.setString(0, user.getUserUsername());
+		return query.list();
 	}
 	
 }

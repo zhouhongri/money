@@ -12,48 +12,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path %>/css/pintuer.css">
 <link rel="stylesheet" href="<%=path %>/css/admin.css">
+<link rel="stylesheet" href="<%=path %>/css/layer.css">
 <script src="<%=path %>/js/jquery.js"></script>
 <script src="<%=path %>/js/pintuer.js"></script>
+<script src="<%=path %>/js/layer.js"></script>
 </head>
 <body>
 		<div class="panel admin-panel">
 			<div class="panel-head">
-				<strong class="icon-reorder">空闲车辆信息</strong> 
+				<strong class="icon-reorder">用户管理</strong> 
 			</div>
 
 			<table class="table table-hover text-center">
 				<tr>
-					<th>车辆编号</th>
-					<th>车辆类型</th>
-					<th>可承载人数</th>
-					<th>驾驶员</th>
+					<th>用户名</th>
+					<th>用户密码</th>
+					<th>用户身份</th>
+					<th>真实姓名</th>
 					<th>性别</th>
 					<th>年龄</th>
-					<th width="310">操作</th>
+					<th>所属部门</th>
+					<th>薪资</th>
+					<th colspan="2">操作</th>
 				</tr>
 				<c:forEach items="${list}" var="c">
-					<tr>
-						<td>${c.car_id}</td>
-						<td>${c.car_type}</td>
-						<td>${c.car_number}</td>
-						<td>${c.driver_name}</td>
-						<td>${c.driver_sex}</td>
-						<td>${c.driver_age}</td>
+					<tr id="tr${c.user_id}">
+						<td>${c.user_username}</td>
+						<td>${c.user_password}</td>
+						<c:if test="${c.user_identity=='0'}">
+							<td>管理员</td>
+						</c:if>
+						<c:if test="${c.user_identity=='1'}">
+							<td>驾驶员</td>
+						</c:if>
+						<c:if test="${c.user_identity=='2'}">
+							<td>车辆部门负责人</td>
+						</c:if>
+						<c:if test="${c.user_identity=='3'}">
+							<td>用车官员</td>
+						</c:if>
+						<td>${c.user_name}</td>
+						<td>${c.user_sex}</td>
+						<td>${c.user_age}</td>
+						<td>${c.user_demp}</td>
+						<td>${c.user_money}</td>
 						<td><div class="button-group">
 								<a class="button border-main"
-									href="<%=path %>/carCtrl/queryCarById?carId=${c.car_id}"><span
-									class="icon-edit"></span> 申请用车</a>
+									onclick="del(${c.user_id});"><span
+									class="icon-edit"></span>删除</a>
 							</div></td>
+						<td>
+						<a class="button border-main" href="<%=path %>/userCtrl/queryUserById?userId=${c.user_id}">
+						<span class="icon-edit"></span>修改</a>
+						</td>
 					</tr>
 				</c:forEach>
 
 				<tr>
-					<td colspan="8"><div class="pagelist">
+					<td colspan="10"><div class="pagelist">
 							<c:if test="${currpage > 1}">
-								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
+								<a href="<%=path %>/userCtrl/queryUser?currpage=${currpage-1}">上一页</a>
 							</c:if>
 							<c:if test="${currpage < pagecount}">|当前${currpage}页/总${pagecount}页|
-        <a href="<%=path %>/carCtrl/queryCar?currpage=${currpage+1}">下一页</a>
+        <a href="<%=path %>/userCtrl/queryUser?currpage=${currpage+1}">下一页</a>
 							</c:if>
 						</div></td>
 				</tr>
@@ -64,5 +85,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function(){
 		//alert('${list}');
 	})
+	function del(userid){
+		$.post("<%=path %>/userCtrl/delUserById",{"userId":userid},
+			function(result){
+				if(result=="success"){
+					$("#tr"+userid).css("display","none");
+				}else{
+					layer.msg("删除失败");
+				}
+		});
+	}
 </script>
 </html>

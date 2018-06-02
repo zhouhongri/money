@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th>申请人年龄</th>
 					<th>承载人数</th>
 					<th>申请时长</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${list}" var="c">
 					<tr>
@@ -36,16 +37,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${c.applicant_age}</td>
 						<td>${c.dispatch_number}</td>
 						<td>${c.dispatch_time_length}</td>
+						<c:choose>
+							<c:when test="${c.dispatch_status == '1'}">
+								<td><button id="clickbutton${c.dispatch_id}" class="button bg-main icon-check-square-o" onclick="reviewed('已完成',${c.dispatch_id},${c.car_id});">已完成</button></td>
+							</c:when>
+							<c:otherwise>
+								<td id="changebutton${c.dispatch_id}"><button class="button bg-main icon-check-square-o" disabled="disabled">已完成</button></td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</c:forEach>
 
 				<tr>
 					<td colspan="8"><div class="pagelist">
 							<c:if test="${currpage > 1}">
-								<a href="<%=path %>/carCtrl/queryCar?currpage=${currpage-1}">上一页</a>
+								<a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage-1}">上一页</a>
 							</c:if>
 							<c:if test="${currpage < pagecount}">|当前${currpage}页/总${pagecount}页|
-        <a href="<%=path %>/carCtrl/queryCar?currpage=${currpage+1}">下一页</a>
+        <a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=${currpage+1}">下一页</a>
 							</c:if>
 						</div></td>
 				</tr>
@@ -56,5 +65,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function(){
 		//alert('${list}');
 	})
+	function reviewed(status,dispatchid,carid){
+		alert(66);
+		$.post("<%=path%>/dispatchCtrl/updateDispatch",{"dispatchStatus":status,"dispatchId":dispatchid,"carId":carid},
+			function(result){
+			if(result=="success"){
+				$("#clickbutton"+dispatchid).attr("disabled","disabled");
+			}else{
+				layer.msg("系统出现一个小问题！");
+			}
+		});
+	}
 </script>
 </html>
