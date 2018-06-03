@@ -37,7 +37,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							class="icon-caret-right"></span>查询车辆信息</a></li>
 			<li><a href="<%=path %>/carCtrl/queryDempNameCar?currpage=1" target="right"><span
 							class="icon-caret-right"></span>车辆分配</a></li>
-			
 		  </ul>  
 		  <h2>
 					<span class="icon-pencil-square-o"></span>油耗管理</h2>

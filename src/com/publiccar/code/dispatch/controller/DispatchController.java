@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.publiccar.code.dispatch.service.DispatchServiceInter;
 import com.publiccar.code.model.Dispatch;
+import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.User;
 import com.publiccar.code.user.service.UserServiceInter;
 
@@ -47,5 +48,12 @@ public class DispatchController {
 	public String updatedispatchCtrl(Dispatch dispatch) {
 		String flag = this.dispatchServiceInter.updateDispatchService(dispatch);
 		return flag;
+	}
+	//车辆信息查询
+	@RequestMapping("/querycar")
+	public String querycar(HttpServletRequest req) {
+	PublicCar publicCar = this.dispatchServiceInter.querycar(req);
+	req.setAttribute("PublicCar", publicCar);
+		return "driverdemp/querycar";
 	}
 }
