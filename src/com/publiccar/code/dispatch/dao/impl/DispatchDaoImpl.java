@@ -1,5 +1,8 @@
 package com.publiccar.code.dispatch.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Query;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.publiccar.code.dispatch.dao.DispatchDaoInter;
 import com.publiccar.code.model.Dispatch;
+import com.publiccar.code.model.PublicCar;
 import com.publiccar.code.model.User;
 
 import framework.base.BaseDao;
@@ -44,6 +48,17 @@ public class DispatchDaoImpl extends BaseDao implements DispatchDaoInter{
 		Query query = session.createQuery(hql);
 		query.setInteger(0, dispatchId);
 		return query.executeUpdate();
+	}
+	//查询车辆信息
+	@Override
+	public List querycar(Integer userid){
+		Session session = this.getSession();
+		List<PublicCar> carlist = new ArrayList<PublicCar>();
+		String hql = "from PublicCar where driverId =  ?";
+		Query query = session.createQuery(hql);
+		query.setInteger(0, userid);
+		carlist = query.list();
+		return carlist;
 	}
 
 }
