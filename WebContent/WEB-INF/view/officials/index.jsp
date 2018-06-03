@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					height="50" alt="" />政府车辆部门后台管理中心</h1>
   </div>
   <div class="head-l"> &nbsp;&nbsp;<a
-				class="button button-little bg-red" href="user_exit.action"><span
+				class="button button-little bg-red" href="<%=path %>/loginCtrl/logout"><span
 				class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav">

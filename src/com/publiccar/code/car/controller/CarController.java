@@ -26,7 +26,7 @@ public class CarController {
 	public String queryCarCtrl(HttpServletRequest req, String currpage) {
 		String flag = this.carServiceInter.queryCarService(req, currpage);
 		if("车辆部门".equals(flag)) {
-			return "cardemp/cars";
+			return "driverdemp/cars";
 		}else if("管理员".equals(flag)){
 			return "admin/cars";
 		}else{
@@ -72,4 +72,18 @@ public class CarController {
 		List<User> list = this.carServiceInter.queryOtherDriverNameSerive();
 		return list;
 	}
+	//查询可分配的车辆信息
+	@RequestMapping("/queryDempNameCar")
+	public String queryDempNameCar(HttpServletRequest req, String currpage) {
+		this.carServiceInter.queryDempNameCarService(req, currpage);
+		return "driverdemp/cars_distribution";
+	}
+	//提交用车申请、更新车辆信息
+	@RequestMapping("/queryDempNameCarById")
+	public String queryDempNameCarById(HttpServletRequest req, PublicCar publicCar) {
+		PublicCar car = this.carServiceInter.queryCarByIdService(publicCar);
+		req.setAttribute("PublicCar", car);
+		return "driverdemp/cars_update";
+	}
+	
 }

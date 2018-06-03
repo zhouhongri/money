@@ -15,4 +15,5 @@ public interface CarDaoInter {
 	public void updateCarDao(PublicCar publicCar);
 	public void insertCarDao(PublicCar publicCar);
 	public List queryOtherDriverNameDao();
+	public void queryDempNameCarDao(HttpServletRequest req, int currpage);
 }

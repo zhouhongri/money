@@ -78,5 +78,12 @@ public class CarDaoImpl extends BaseDao implements CarDaoInter{
 		query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 		return query.list();
 	}
+
+	@Override
+	public void queryDempNameCarDao(HttpServletRequest req, int currpage) {
+		String sql = "select * from public_car where demp_name=null or demp_name=''";
+		PageUtil pageUtil = new PageUtil();
+	    pageUtil.doPage(sql, this.getSession(), req, currpage);
+	}
 	
 }

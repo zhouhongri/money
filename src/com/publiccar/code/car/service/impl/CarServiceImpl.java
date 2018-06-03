@@ -86,5 +86,10 @@ public class CarServiceImpl implements CarServiceInter{
 		List list = this.carDaoInter.queryOtherDriverNameDao();
 		return list;
 	}
+	@Override
+	public void queryDempNameCarService(HttpServletRequest req, String currpage) {
+		int intcurrpage = Integer.parseInt(currpage);
+		this.carDaoInter.queryDempNameCarDao(req, intcurrpage);
+	}
 	
 }
