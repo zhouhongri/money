@@ -51,12 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <label>车辆类型：</label>
         </div>
         <div class="field">
-          <select name="carType" id="carTypeSelect" class="input w50">
-          	<option style="display: none;" value='${PublicCar.carType }'>${PublicCar.carType }</option>
-          	<option value='小型'>小型</option>
-          	<option value='中型'>中型</option>
-          	<option value='大型'>大型</option>
-          </select>
+          <input type="text" class="input" readonly="readonly" name="carType" value="${PublicCar.carType}" style="width:25%; float:left"/>
           <div class="tips"></div>
         </div>
       </div>
@@ -66,42 +61,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="field">
           <input type="text" class="input" name="carNumber" value="${PublicCar.carNumber}" 
-          style="width:25%; float:left" placeholder="请输入用车人数" data-validate="required:请输入用车人数"
-          oninput="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') "/>
+          style="width:25%; float:left" readonly="readonly"/>
           <div class="tips"></div>
         </div>
       </div>
-      <c:choose>
-      	<c:when test="${PublicCar.dempName!=null && PublicCar.dempName!=''}">
-	      	<div class="form-group">
-		        <div class="label">
-		          <label>部门名称：</label>
-		        </div>
-		        <div class="field">
-		          <input type="text" class="input" readonly="readonly" name="dempName" value="${PublicCar.dempName}" style="width:25%; float:left"/>
-		          <div class="tips"></div>
-		        </div>
-      		</div>
-      	</c:when>
-      	<c:otherwise>
-      		<div class="form-group">
-		        <div class="label">
-		          <label>部门名称：</label>
-		        </div>
-		        <div class="field">
-		          <input type="text" class="input" readonly="readonly" value="暂无部门" style="width:25%; float:left"/>
-		          <input type="hidden" name="dempName" value="">
-		          <div class="tips"></div>
-		        </div>
-      		</div>
-      	</c:otherwise>
-      </c:choose>
+      <div class="form-group">
+        <div class="label">
+          <label>所属部门：</label>
+        </div>
+        <div class="field">
+          <select name="dempName" id="dempNameSelect" class="input w50">
+          </select>
+          <div class="tips"></div>
+        </div>
+      </div>
       <div class="form-group">
         <div class="label">
           <label></label>
         </div>
         <div class="field">
-          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+          <button class="button bg-main icon-check-square-o" type="submit">分配</button>
         </div>
       </div>
     </form>
@@ -109,7 +88,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
 $(function(){
-	
-})
+	 $.post("<%=path %>/dempCtrl/queryDempName",{},
+				function(result){
+					if(result!=null&&result!=""){
+						$("#dempNameSelect").html("");
+						$("#dempNameSelect").append("<option value='"+result[0].dempName+"' selected='selected'>"+result[0].dempName+"</option>");
+						for(var i=1;i<result.length;i++){
+							$("#dempNameSelect").append("<option value='"+result[i].dempName+"'>"+result[i].dempName+"</option>");
+						}
+					}
+			});
+});
 </script>
 </html>

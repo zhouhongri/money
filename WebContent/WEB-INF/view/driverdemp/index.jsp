@@ -20,6 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=path %>/images/123456.jpg" class="radius-circle rotate-hover"
 					height="50" alt="" />政府车辆部门后台管理中心</h1>
   </div>
+  <div class="head-l"> &nbsp;&nbsp;<a
+				class="button button-little bg-red" href="<%=path %>/loginCtrl/logout"><span
+				class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav">
   <div class="leftnav-title">
@@ -30,6 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <ul>
 		    <li><a href="<%=path %>/dispatchCtrl/queryDispatch?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询车辆申请记录</a></li>
+			<li><a href="<%=path %>/carCtrl/queryCar?currpage=1" target="right"><span
+							class="icon-caret-right"></span>查询车辆信息</a></li>
+			<li><a href="<%=path %>/carCtrl/queryDempNameCar?currpage=1" target="right"><span
+							class="icon-caret-right"></span>车辆分配</a></li>
 			
 		  </ul>  
 		  <h2>
@@ -59,7 +66,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <li><a href="<%=path %>/rapairCtrl/selectrapair?currpage=1" target="right"><span
 							class="icon-caret-right"></span>查询保险记录</a></li>
 			
-		  </ul>  
+		  </ul> 
+		  <h2>
+					<span class="icon-pencil-square-o"></span>收入管理</h2>
+		  <ul>
+		    <li><a href="<%=path %>/incomeCtrl/queryIncome?currpage=1" target="right"><span
+							class="icon-caret-right"></span>查询上月工资信息</a></li>
+			
+		  </ul> 
 </div>
 <script type="text/javascript">
 	$(function() {

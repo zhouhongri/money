@@ -18,11 +18,17 @@ public class LoginController {
 	
 	@Autowired
 	private LoginServiceInter loginService;
-	
+	//登录
 	@RequestMapping("/login")
 	@ResponseBody
-	   public Map login(HttpSession session, User user) {
-	      return this.loginService.login(session, user);
+	public Map login(HttpSession session, User user) {
+		return this.loginService.login(session, user);
+	}
+	//注销
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "/login/login";
 	}
 	
 }

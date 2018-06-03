@@ -18,20 +18,20 @@ public class DempController {
 	
 	@Autowired
 	public DempServiceInter dempServiceInter;
-	
+	//查询部门信息
 	@RequestMapping("/queryDemp")
 	public String queryDemp(HttpServletRequest req,String currpage) {
 		this.dempServiceInter.queryDempService(req, currpage);
 		return "admin/demps";
 	}
-	
+	//查询符合条件的部门信息
 	@RequestMapping("/queryDempById")
 	public String queryDempByIdCtrl(HttpServletRequest req, Demp demp) {
 		Demp dempInstance = this.dempServiceInter.getDempByIdService(demp);
 		req.setAttribute("Demp", dempInstance);
 		return "admin/demps_update";
 	}
-	
+	//更新部门信息
 	@RequestMapping("/updateDemp")
 	public String updateDemp(Demp demp) {
 		this.dempServiceInter.updateDempService(demp);
@@ -44,18 +44,20 @@ public class DempController {
 		String flag = this.dempServiceInter.delDempService(demp);
 		return flag;
 	}
-	
+	//新增部门信息
 	@RequestMapping("/insertDemp")
 	public String insertDemp(Demp demp) {
 		this.dempServiceInter.insertDempService(demp);
 		return "redirect:/dempCtrl/queryDemp?currpage=1";
 	}
+	//检查是否存在相同部门
 	@RequestMapping("/checkDempName")
 	@ResponseBody
 	public String checkDempName(Demp demp) {
 		String flag = this.dempServiceInter.getDempByNameService(demp);
 		return flag;
 	}
+	//查询所有部门名称
 	@RequestMapping("/queryDempName")
 	@ResponseBody
 	public List<Demp> queryDempName() {

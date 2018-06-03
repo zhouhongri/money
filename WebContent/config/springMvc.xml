@@ -69,6 +69,31 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    
+    <!-- 配置拦截器 -->
+	<mvc:interceptors>
+	
+	<!-- 在mvc:interceptors根节点下，配置mvc:interceptor，拦截特定请求 -->
+	<mvc:interceptor>
+	
+	<!-- 通过mvc:mapping拦截特定请求，path中：*代表该目录下的同级目录，**代表该目录下的全部内容 -->
+		<mvc:mapping path="/**"/>
+	<bean id="myInterceptor" class="framework.interceptors.MyInterceptor">
+	
+	
+	<!-- 为myInterceptor自定义拦截器中的allowUri赋值 -->
+		<property name="allowUri">
+			<list>
+				<value>/resource/</value>
+				<value>/common/login/login</value>
+				<value>/loginCtrl/login</value>
+			</list>
+		</property>
+	</bean>
+	</mvc:interceptor>
+	<!-- 在mvc:interceptors根节点下，配置mvc:interceptor，拦截特定请求 -->
+	</mvc:interceptors>
+    
     <!-- 注解事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

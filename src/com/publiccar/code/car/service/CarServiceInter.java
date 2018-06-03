@@ -15,4 +15,5 @@ public interface CarServiceInter {
 	public void updateCarService(PublicCar publicCar);
 	public void insertCarService(PublicCar publicCar, User user);
 	public List queryOtherDriverNameSerive();
+	public void queryDempNameCarService(HttpServletRequest req, String currpage); 
 }
