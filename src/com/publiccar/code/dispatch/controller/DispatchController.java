@@ -54,6 +54,6 @@ public class DispatchController {
 	public String querycar(HttpServletRequest req) {
 	PublicCar publicCar = this.dispatchServiceInter.querycar(req);
 	req.setAttribute("PublicCar", publicCar);
-		return "driverdemp/querycar";
+		return "driver/querycar";
 	}
 }
